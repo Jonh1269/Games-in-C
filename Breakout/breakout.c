@@ -1,5 +1,6 @@
 /* ============================================================================
- * SUPER BREAKOUT (Atari 2600, 1978) — clone fiel ao manual, Xlib + ALSA puros
+ * SUPER BREAKOUT (Atari 2600)
+ * FEITO POR: Jonh1269/Pedro.
  * ----------------------------------------------------------------------------
  * Video: só X11 (Xlib). Audio: só ALSA (driver de som nativo do Linux).
  * Threads: pthread (POSIX). Nenhuma lib "de fora" (SDL, fontes, etc).
@@ -12,29 +13,6 @@
  *   7 - PROGRESSIVE   (a parede de tijolos desce sem parar, infinita)
  *   8 - CHILDRENS     (Breakout normal, mais lento, sem acelerar, sem
  *                       encolher a raquete)
- *
- * Fidelidade ao manual original (Super Breakout, CX2608):
- *   - 8 fileiras de tijolos, pontuando 1,1,3,3,5,5,7,7 (de cima pra baixo)
- *   - placar de 4 digitos, "enrola" pra 0000 se passar de 9999
- *   - contador de TURNOS usados (0..5), nao "vidas restantes"
- *   - a raquete encolhe pela metade quando a bola "fura" ate o teto
- *     (nao acontece na versao infantil)
- *   - a bola acelera um pouco apos 8, 16 e 48 rebatidas na raquete, e
- *     tambem ao quebrar tijolos das 4 fileiras mais baixas
- *   - chave de dificuldade (B) alterna raquete grande (iniciante) / normal
- *   - parede se refaz infinitamente quando limpa, mantendo placar e turnos
- *
- * Algumas simplificacoes deliberadas (o manual nao especifica os detalhes
- * exatos de implementacao original):
- *   - CAVITY: a liberacao de cada bola cativa acontece quando os tijolos
- *     da metade (esquerda/direita) das fileiras 3 e 4 sao destruidos
- *   - PROGRESSIVE: o "bonus por acertar um tijolo bem na hora" concede
- *     pontos extras fixos quando voce acerta um tijolo que ja estava na
- *     zona de risco perto de sumir
- *
- * Compila com:
- *     gcc breakout.c -o breakout -lX11 -lasound -lpthread -lm
- *
  * Controles:
  *   - Movimento do mouse ..... move a(s) raquete(s) (unico jeito de mover)
  *   - G ...................... troca de variacao do jogo (1/3/5/7/8) e
